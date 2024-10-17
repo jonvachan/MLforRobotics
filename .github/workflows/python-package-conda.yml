@@ -39,19 +39,19 @@ jobs:
         pytest | tee pytest_output.log
 
     - name: Upload flake8 errors
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: flake8-errors
         path: flake8_errors.log
 
     - name: Upload flake8 warnings
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: flake8-warnings
         path: flake8_warnings.log
 
     - name: Upload pytest output
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: pytest-output
         path: pytest_output.log

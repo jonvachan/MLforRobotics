@@ -30,13 +30,13 @@ jobs:
         flake8 process_weather_data.py | tee flake8_output.log
 
     - name: Upload script output
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: script-output
         path: output.log
 
     - name: Upload flake8 output
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: flake8-output
         path: flake8_output.log
