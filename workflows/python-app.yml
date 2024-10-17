@@ -1,0 +1,42 @@
+name: Python application
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas flake8
+
+    - name: Run script
+      run: |
+        python process_weather_data.py | tee output.log
+
+    - name: Check code style
+      run: |
+        flake8 process_weather_data.py | tee flake8_output.log
+
+    - name: Upload script output
+      uses: actions/upload-artifact@v2
+      with:
+        name: script-output
+        path: output.log
+
+    - name: Upload flake8 output
+      uses: actions/upload-artifact@v2
+      with:
+        name: flake8-output
+        path: flake8_output.log
