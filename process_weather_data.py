@@ -30,7 +30,10 @@ df = pd.read_csv(data, delim_whitespace=True, names=column_names, skiprows=1, dt
 # Test 
 print(df)
 
-data = StringIO(string_data)
-column_names = ["Outlook", "Temperature", "Humidity", "Windy", "Play"]
-df = pd.read_csv(data, delim_whitespace=True, names=column_names, skiprows=1, dtype=str)
-
+# Splitting the data into a training set as a n x (d+1) matrix and a test set as a m x c matrix
+train_data = df.sample(n=10, random_state=42)
+test_data = df.drop(train_data.index)
+print("Training Data:")
+print(train_data)
+print("\nTest Data:")
+print(test_data)
