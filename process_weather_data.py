@@ -29,3 +29,8 @@ df = pd.read_csv(data, delim_whitespace=True, names=column_names, skiprows=1, dt
 
 # Test 
 print(df)
+
+data = StringIO(string_data)
+column_names = ["Outlook", "Temperature", "Humidity", "Windy", "Play"]
+df = pd.read_csv(data, delim_whitespace=True, names=column_names, skiprows=1, dtype=str)
+
